@@ -8,26 +8,25 @@ using namespace std;
 string red = "\x1b[31m"; // setting the color changes
 string blue = "\x1b[34m";
 string green = "\x1b[36m";
+string reset = "\x1b[0m";
 
 
 class square
 {
   private:
     double side; // side variable 
-    string unit;
+  
   public:
     square()
     {
       side = 0.0;
-      unit = 0;
+      
     
     }
 
   square(double side);
   
   void setSide(double s1) {side = s1; }
-  void setUnit(string u) { unit = u; }
-  double getUnit() const { return unit; }
   double getSide() const {return side; } //setting side of the square
   double getArea() const // to get area of shape
   {
@@ -48,18 +47,30 @@ class square
   
 int main()
 {
+  string unit = " ";
+  cout << "What is the Units of Measure for the Square? ";
+  cin >> unit;
+
   square s1;
   s1.setSide(5.0); // setting the side of square 1
-  cout << "What is the Units of Measure for the Square? ";
-  cin >> s1.setUnit();
-  cout << red << "The Sides of Square 1 are: " << blue << s1.getSide() << s1.getUnit() << endl;
-  cout << red << "The Area of Square 1 is: " << blue << s1.getArea() << s1.getUnit() << green << endl;
+  cout << red << "The Side of Square 1 is: " << blue << s1.getSide()
+   << " " << unit << endl;
+  cout << red << "The Area of Square 1 is: " << blue << s1.getArea() 
+  << " " << unit << green << endl;
+  cout << "\n";
   s1.printShape();
+
+  string unit1 = " ";
+  cout << reset << "\nWhat is the Units of Measure for the Square? ";
+  cin >> unit1;
 
   square s2;
   s2.setSide(7.4); // setting the side of square 2 
-  cout << red << "\nThe Sides of Square 2 are: " << blue << s2.getSide() << endl;
-  cout << red << "The Area of Square 2 is: " << blue << s2.getArea()  << green << endl;
+  cout << red << "\nThe Side of Square 2 is: " << blue << s2.getSide() 
+  << " " << unit1 << endl;
+  cout << red << "The Area of Square 2 is: " << blue << s2.getArea() 
+  << " " << unit1 << green << endl;
+  cout << "\n";
   s2.printShape();
 
 }
